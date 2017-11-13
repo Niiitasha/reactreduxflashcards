@@ -1,24 +1,21 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import { previous } from '../actions';
+import { connect } from 'react-redux';
 
-class GraphColumn extends Component {
 
-    render() {
-        let percentHeight = (this.props.value / this.props.max * 100).toFixed(2) + "%";
-        if (this.props.value === 0) {
-            percentHeight = "auto";
-        }
+class PreviousButton extends Component {
+  render (){
+    return (
+    <button onClick={this.props.previous} disabled={this.props.disabled} className="PreviousButton">
+   Previous Card
+</button>
 
-        return (
-            <div className="GraphColumn">
-                <div className="GraphColumn__bar-container">
-                    <div className="GraphColumn__bar"
-                         style={{height: percentHeight, backgroundColor: this.props.color}}
-                    >{this.props.value}</div>
-                </div>
-                <div className="GraphColumn__label">{this.props.label}</div>
-            </div>
-        );
-    }
+    );
+  }
 }
 
-export default GraphColumn;
+const mapActionsToProps = {
+  previous: previous
+};
+
+export default connect(null, mapActionsToProps)(PreviousButton);

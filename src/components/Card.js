@@ -26,7 +26,3 @@ return {
 }
 
 export default connect(mapStateToProps)(Card);
-
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { next } from '../actions';
